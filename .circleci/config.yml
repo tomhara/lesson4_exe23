@@ -1,4 +1,9 @@
-smoke_test:
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@2.0.3
+ 
+jobs:
+  smoke_test:
     docker:
      -image: alpine:latest
     steps:
@@ -13,3 +18,7 @@ smoke_test:
             else
              return 1
             fi
+workflows:
+  my_workflow:
+   jobs:
+     - smoke_test
